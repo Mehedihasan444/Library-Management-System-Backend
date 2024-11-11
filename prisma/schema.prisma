@@ -12,3 +12,32 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Book {
+  bookId          String         @id @default(uuid())
+  title           String
+  genre           String
+  publishedYear   Int
+  totalCopies     Int
+  availableCopies Int
+  BorrowRecord    BorrowRecord[]
+}
+
+model Member {
+  memberId       String   @id @default(uuid())
+  name           String
+  email          String
+  phone          String
+  membershipDate DateTime
+  BorrowRecord   BorrowRecord[]
+}
+
+model BorrowRecord {
+  borrowId   String   @id @default(uuid())
+  borrowDate DateTime
+  returnDate DateTime
+  bookId     String
+  book       Book     @relation(fields: [bookId], references: [bookId])
+  memberId   String
+  member Member @relation(fields:[memberId],references:[memberId])
+}
