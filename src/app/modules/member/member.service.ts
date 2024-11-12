@@ -2,6 +2,14 @@ import { Member } from "@prisma/client";
 import prisma from "../../config";
 
 const createMember = async (member: Member) => {
+  const isMemberExist = await prisma.member.findFirst({
+    where: {
+      email: member.email,
+    },
+  });
+  if (isMemberExist) {
+    throw new Error("Member already exists");
+  }
     const result = await prisma.member.create({
         data: member
     });

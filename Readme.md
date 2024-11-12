@@ -4,7 +4,7 @@
 The Library Management System is a backend application designed to manage the borrowing and returning of books in a library. It tracks borrowed books, calculates overdue days, and provides detailed information about borrowers and books.
 
 ## Live URL
-[Live Deployment](https://your-live-url.com)
+[Live Deployment](https://library-management-system-backend-sigma.vercel.app/)
 
 ## Technology Stack & Packages
 - **Node.js**: JavaScript runtime

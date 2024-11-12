@@ -15,6 +15,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.memberService = void 0;
 const config_1 = __importDefault(require("../../config"));
 const createMember = (member) => __awaiter(void 0, void 0, void 0, function* () {
+    const isMemberExist = yield config_1.default.member.findFirst({
+        where: {
+            email: member.email,
+        },
+    });
+    if (isMemberExist) {
+        throw new Error("Member already exists");
+    }
     const result = yield config_1.default.member.create({
         data: member
     });
