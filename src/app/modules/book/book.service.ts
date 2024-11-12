@@ -2,6 +2,15 @@ import { Book } from "@prisma/client";
 import prisma from "../../config";
 
 const createBook = async (book: Book) => {
+  const isBookExist = await prisma.book.findFirst({
+    where: {
+      title: book.title,
+      publishedYear: book.publishedYear,
+    },
+  });
+  if (isBookExist) {
+    throw new Error("Book already exists");
+  }
   const result = await prisma.book.create({
     data: book,
   });
