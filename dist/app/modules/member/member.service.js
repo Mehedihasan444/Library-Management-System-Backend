@@ -26,7 +26,7 @@ const createMember = (member) => __awaiter(void 0, void 0, void 0, function* () 
     const result = yield config_1.default.member.create({
         data: member
     });
-    return member;
+    return result;
 });
 const getMembers = () => __awaiter(void 0, void 0, void 0, function* () {
     const members = yield config_1.default.member.findMany();

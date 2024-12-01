@@ -13,7 +13,7 @@ const createMember = async (member: Member) => {
     const result = await prisma.member.create({
         data: member
     });
-    return member;
+    return result;
 }
 const getMembers = async () => {
     const members = await prisma.member.findMany();
